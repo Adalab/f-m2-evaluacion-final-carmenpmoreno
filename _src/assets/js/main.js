@@ -25,10 +25,16 @@ function handleSearchButton () {
         return response.json()
     })
     .then(function(data) {
-        // console.log(data);
         // asigna al innerHTML del h2 el título de la serie
-        // asigna al src de la imagen la url de la imagen
         title.innerHTML = data.name;
-        photo.src = data.image.medium;
+        console.log(data);
+        // asigna al src de la imagen la url de una imagen por defecto, si en data no la hay 
+        if (data.image === null) {
+            photo.src = 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
+        } else {
+            // y si la hay, toma la url del objeto "data" como valor para "photo.src"
+            photo.src = data.image.medium;
+        }
+
     });
 }
