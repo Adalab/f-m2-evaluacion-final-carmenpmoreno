@@ -17,6 +17,9 @@ function handleSearchButton () {
     const liEl = document.querySelector('.list-item');
     // dentro del li, mete un h2 y una imagen y las guardo en constantes
     liEl.innerHTML = '<h2 class="title"></h2><img class="photo" src="" alt="">';
+    // listener de la función que cambia de color los lis
+    liEl.addEventListener('click', changeColorLi);
+    // guardo en constantes los elementos title y photo
     const title = document.querySelector('.title');
     const photo = document.querySelector('.photo');
     // hace una petición fetch a la url de la API: http://api.tvmaze.com/singlesearch/shows?q= + el valor del input, que:
@@ -41,16 +44,13 @@ function handleSearchButton () {
 // segunda etapa del ejercicio: lista de favoritos
 // 1. cuando pinchamos un li "resultado", intercambia el color del fondo del li con el de el texto del título
     // recuperar el li que guardé en una constante en la anterior función...
-    console.log(liEl);
-    // escuchamos el click sobre el li
-    liEl.addEventListener('click', changeColorLi);
-    console.log(liEl);
+    // escuchamos el click sobre el li (pero lo coloco dentro de mi función anterior, que es cuando se crean los lis)
     // función en la que:
-    // function changeColorLi() {
-    //     // si tiene la clase list-item, se le quita y se le añade la clase list-item-select
-    //     if (liEl)
-    //     // en el resto de casos, se añade la clase list-item de nuevo
-    // }
+    function changeColorLi() {
+        // si tiene la clase list-item, se le quita y se le añade la clase list-item-select
+        console.log('Hola');
+        // en el resto de casos, se añade la clase list-item de nuevo
+    }
 
 // 2. almacenamos cada li seleccionado en un array que almacenamos en una variable
     // el listado se visualiza en la parte izquierda de la pantalla
