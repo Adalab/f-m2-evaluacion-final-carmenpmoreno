@@ -14,6 +14,6 @@ You will need to install [Node.js] (https://nodejs.org/) and [Gulp] (https://gul
 - Install the global source command to be able to use it from any folder using `npm install --global gulp-cli`
 
 > ### Every time we are working with this code:
-- From our terminal, we execute the command `gulp` so that we perform the task by default, and in the case of` gulpfile.js` we have in adalab-web-starter-kit. compilation, mining and / or server every time we make a change.
+- From our terminal, we execute the command `gulp` to see the changes online.
 
 
