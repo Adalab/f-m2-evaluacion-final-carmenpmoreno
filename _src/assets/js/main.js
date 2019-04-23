@@ -39,25 +39,30 @@ function handleSearchButton () {
 
     });
     //listener sobre el li creado en esta función, el cual que nos permite acceder a sus lis, si los hay, para cambia el color y seleccionarlo como favorito
-    console.log(liEl);
     liEl.addEventListener('click', handleItemListClick);
     //segunda etapa del ejercicio: lista de favoritos. Se ejecuta escuchando el click sobre el li y éste intercambia color de fondo y fuente, así como pasa a formar parte de la lista de favoritos
 
-function handleItemListClick () {
-// 1. se intercambia el color del fondo del li con el de el texto del título
-        console.log('Hola');
-    // si tiene la clase list-item, se le quita y se le añade la clase list-item-select
+    function handleItemListClick () {
+    // 1. se intercambia el color del fondo del li con el de el texto del título
+    // 2. almacenamos cada li seleccionado en un array que almacenamos en una variable
+        // si tiene la clase list-item, se le quita y se le añade la clase list-item-select
         if (liEl.classList.contains('list-item')) {
-            liEl.classList.remove('list-item');
             liEl.classList.add('list-item-select');
-        }
-// 2. almacenamos cada li seleccionado en un array que almacenamos en una variable
-    // creamos el array vacío
-     
-    // el listado se visualiza en la parte izquierda de la pantalla en otra "ul"
-}
-
-
+        };
+        // almacenamos en un array que creamos en este momento, cada li que tenga la clase 'list-item-select'
+        if (liEl.classList.contains('list-item-select')) {
+            let liSelected = document.querySelector('.list-item-select');
+            // creamos el array vacío en una variable
+            const selectedList = [];
+            selectedList[0] = liSelected;
+            console.log(liSelected);
+            // for(let i=0; i<selectedSeries.length; i++) {
+            // }
+            console.log(selectedList);
+        };
+        // listado vacío se visualiza en la parte izquierda de la pantalla
+        // guardamos en esa lista los elementos del array, según vayan sumándose (bucle)
+    }
 }
     
 
