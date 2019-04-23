@@ -4,7 +4,7 @@
 
 const buttonEl = document.querySelector('.btn');
 const inputEl = document.querySelector('.finder-input');
-const ulEl = document.querySelector('.list')
+const sectionEl = document.querySelector('.main-section');
 
 // escuchar al botón
 buttonEl.addEventListener('click', handleSearchButton);
@@ -12,6 +12,9 @@ buttonEl.addEventListener('click', handleSearchButton);
 function handleSearchButton () {
     // recoge en una constante el valor del input
     const inputValue = inputEl.value;
+    // pinta un ul en nuestra main section y lo guarda en una constante
+    sectionEl.innerHTML = '<ul class="list"></ul>';
+    const ulEl = document.querySelector('.list');
     // pinta en nuestro ul un li y lo meto en una constante
     ulEl.innerHTML = '<li class="list-item"></li>';
     const liEl = document.querySelector('.list-item');
@@ -53,14 +56,19 @@ function handleSearchButton () {
         if (liEl.classList.contains('list-item-select')) {
             let liSelected = document.querySelector('.list-item-select');
             // creamos el array vacío en una variable
-            const selectedList = [];
-            selectedList[0] = liSelected;
-            console.log(liSelected);
+            const selectedArray = [];
+            selectedArray[0] = liSelected;
             // for(let i=0; i<selectedSeries.length; i++) {
             // }
-            console.log(selectedList);
+            console.log(selectedArray);
+            // se crea otra lista en mi main-section, situada a la izquierda de la pantalla
+            sectionEl.innerHTML += '<ul class="selected-list">Mis series favoritas</ul>';
+            // la recojo en una constante
+            const SelectedList = document.querySelector('.selected-list');
+            console.log(SelectedList);
+            // array se visualiza en la lista a la izquierda
+            SelectedList.innerHTML += selectedArray[0];
         };
-        // listado vacío se visualiza en la parte izquierda de la pantalla
         // guardamos en esa lista los elementos del array, según vayan sumándose (bucle)
     }
 }
