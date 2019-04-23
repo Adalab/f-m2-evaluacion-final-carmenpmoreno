@@ -17,8 +17,6 @@ function handleSearchButton () {
     const liEl = document.querySelector('.list-item');
     // dentro del li, mete un h2 y una imagen y las guardo en constantes
     liEl.innerHTML = '<h2 class="title"></h2><img class="photo" src="" alt="">';
-    // listener de la función que cambia de color los lis
-    liEl.addEventListener('click', changeColorLi);
     // guardo en constantes los elementos title y photo
     const title = document.querySelector('.title');
     const photo = document.querySelector('.photo');
@@ -40,17 +38,20 @@ function handleSearchButton () {
         }
 
     });
+    //metemos dentro de esta función el listener sobre el li creado, el cual que nos permite acceder a él para cambia el color y seleccionarlo como favorito
+    liEl.addEventListener('click', handleItemListClick); 
 }
-// segunda etapa del ejercicio: lista de favoritos
-// 1. cuando pinchamos un li "resultado", intercambia el color del fondo del li con el de el texto del título
+// segunda etapa del ejercicio: lista de favoritos. Se ejecuta escuchando el click sobre el li y suceden dos cosas:
+function handleItemListClick () {
+// 1. se intercambia el color del fondo del li con el de el texto del título
     // recuperar el li que guardé en una constante en la anterior función...
     // escuchamos el click sobre el li (pero lo coloco dentro de mi función anterior, que es cuando se crean los lis)
     // función en la que:
-    function changeColorLi() {
+    
         // si tiene la clase list-item, se le quita y se le añade la clase list-item-select
         console.log('Hola');
         // en el resto de casos, se añade la clase list-item de nuevo
-    }
+}
 
 // 2. almacenamos cada li seleccionado en un array que almacenamos en una variable
-    // el listado se visualiza en la parte izquierda de la pantalla
+    // el listado se visualiza en la parte izquierda de la pantalla en otra "ul"
