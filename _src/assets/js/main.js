@@ -38,20 +38,26 @@ function handleSearchButton () {
         }
 
     });
-    //metemos dentro de esta función el listener sobre el li creado, el cual que nos permite acceder a él para cambia el color y seleccionarlo como favorito
-    liEl.addEventListener('click', handleItemListClick); 
-}
-// segunda etapa del ejercicio: lista de favoritos. Se ejecuta escuchando el click sobre el li y suceden dos cosas:
+    //listener sobre el li creado en esta función, el cual que nos permite acceder a sus lis, si los hay, para cambia el color y seleccionarlo como favorito
+    console.log(liEl);
+    liEl.addEventListener('click', handleItemListClick);
+    //segunda etapa del ejercicio: lista de favoritos. Se ejecuta escuchando el click sobre el li y éste intercambia color de fondo y fuente, así como pasa a formar parte de la lista de favoritos
+
 function handleItemListClick () {
 // 1. se intercambia el color del fondo del li con el de el texto del título
-    // recuperar el li que guardé en una constante en la anterior función...
-    // escuchamos el click sobre el li (pero lo coloco dentro de mi función anterior, que es cuando se crean los lis)
-    // función en la que:
-    
-        // si tiene la clase list-item, se le quita y se le añade la clase list-item-select
         console.log('Hola');
-        // en el resto de casos, se añade la clase list-item de nuevo
+    // si tiene la clase list-item, se le quita y se le añade la clase list-item-select
+        if (liEl.classList.contains('list-item')) {
+            liEl.classList.remove('list-item');
+            liEl.classList.add('list-item-select');
+        }
+// 2. almacenamos cada li seleccionado en un array que almacenamos en una variable
+    // creamos el array vacío
+     
+    // el listado se visualiza en la parte izquierda de la pantalla en otra "ul"
 }
 
-// 2. almacenamos cada li seleccionado en un array que almacenamos en una variable
-    // el listado se visualiza en la parte izquierda de la pantalla en otra "ul"
+
+}
+    
+
