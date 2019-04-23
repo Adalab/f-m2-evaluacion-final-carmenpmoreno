@@ -62,9 +62,11 @@ function handleSearchButton () {
             // }
             console.log(selectedArray);
             // se crea otra lista en mi main-section, situada a la izquierda de la pantalla
-            sectionEl.innerHTML += '<ul class="selected-list">Mis series favoritas</ul>';
+            sectionEl.innerHTML += '<ul class="selected-list">';
             // la recojo en una constante
             const SelectedList = document.querySelector('.selected-list');
+            // creo un h2 dentro de la nueva lista
+            SelectedList.innerHTML ='<h2 class="selected-list__title">Mis series favoritas</h2>';
             console.log(SelectedList);
             // array se visualiza en la lista a la izquierda
             SelectedList.innerHTML += selectedArray[0];
