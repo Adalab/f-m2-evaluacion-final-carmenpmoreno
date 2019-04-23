@@ -54,10 +54,11 @@ function handleSearchButton () {
         };
         // almacenamos en un array que creamos en este momento, cada li que tenga la clase 'list-item-select'
         if (liEl.classList.contains('list-item-select')) {
-            let liSelected = document.querySelector('.list-item-select');
+            // let liSelected = document.querySelector('.list-item-select');
+            console.log(liEl);
             // creamos el array vacío en una variable
             const selectedArray = [];
-            selectedArray[0] = liSelected;
+            selectedArray[0] = liEl.innerHTML;
             // for(let i=0; i<selectedSeries.length; i++) {
             // }
             console.log(selectedArray);
