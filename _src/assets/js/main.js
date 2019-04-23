@@ -5,11 +5,13 @@
 const buttonEl = document.querySelector('.btn');
 const inputEl = document.querySelector('.finder-input');
 const sectionEl = document.querySelector('.main-section');
+// array en el que almacenaremos lis seleccionados como favorito
+const selectedArray = [];
 
 // escuchar al botón
 buttonEl.addEventListener('click', handleSearchButton);
 // función que:
-function handleSearchButton () {
+function handleSearchButton() {
     // recoge en una constante el valor del input
     const inputValue = inputEl.value;
     // pinta un ul en nuestra main section y lo guarda en una constante
@@ -25,56 +27,61 @@ function handleSearchButton () {
     const photo = document.querySelector('.photo');
     // hace una petición fetch a la url de la API: http://api.tvmaze.com/singlesearch/shows?q= + el valor del input, que:
     fetch('http://api.tvmaze.com/singlesearch/shows?q=' + inputValue)
-    .then(function (response) {
-        return response.json()
-    })
-    .then(function(data) {
-        // asigna al innerHTML del h2 el título de la serie
-        title.innerHTML = data.name;
-        console.log(data);
-        // asigna al src de la imagen la url de una imagen por defecto, si en data no la hay 
-        if (data.image === null) {
-            photo.src = 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
-        } else {
-            // y si la hay, toma la url del objeto "data" como valor para "photo.src"
-            photo.src = data.image.medium;
-        }
-
-    });
-    //listener sobre el li creado en esta función, el cual que nos permite acceder a sus lis, si los hay, para cambia el color y seleccionarlo como favorito
-    liEl.addEventListener('click', handleItemListClick);
-    //segunda etapa del ejercicio: lista de favoritos. Se ejecuta escuchando el click sobre el li y éste intercambia color de fondo y fuente, así como pasa a formar parte de la lista de favoritos
-
-    function handleItemListClick () {
-    // 1. se intercambia el color del fondo del li con el de el texto del título
-    // 2. almacenamos cada li seleccionado en un array que almacenamos en una variable
-        // si tiene la clase list-item, se le quita y se le añade la clase list-item-select
-        if (liEl.classList.contains('list-item')) {
-            liEl.classList.add('list-item-select');
-        };
-        // almacenamos en un array que creamos en este momento, cada li que tenga la clase 'list-item-select'
-        if (liEl.classList.contains('list-item-select')) {
-            const liElSelected = document.querySelectorAll('list-item-select');
-            // creamos el array vacío en una variable
-            const selectedArray = [];
-            // bucle que me recorre todo el array de lis y asigna a cada uno una posición dentro del listado de favoritos "Selected Array"
-            for(let i=0; i<selectedArray.length; i++) {
-                selectedArray[0] = liElSelected[0].innerHTML;
+        .then(function (response) {
+            return response.json()
+        })
+        .then(function (data) {
+            // asigna al innerHTML del h2 el título de la serie
+            title.innerHTML = data.name;
+            console.log(data);
+            // asigna al src de la imagen la url de una imagen por defecto, si en data no la hay 
+            if (data.image === null) {
+                photo.src = 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
+            } else {
+                // y si la hay, toma la url del objeto "data" como valor para "photo.src"
+                photo.src = data.image.medium;
             }
-            console.log(selectedArray);
-            // se crea otra lista en mi main-section, situada a la izquierda de la pantalla
-            sectionEl.innerHTML += '<ul class="selected-list">';
-            // // la recojo en una constante
-            const SelectedList = document.querySelector('.selected-list');
-            // // creo un h2 dentro de la nueva lista
-            SelectedList.innerHTML ='<h2 class="selected-list__title">Mis series favoritas</h2>';
-            console.log(SelectedList);
-            // // array se visualiza en la lista a la izquierda
-            SelectedList.innerHTML += selectedArray;
 
+        });
+
+    //nueva función para segunda etapa del ejercicio: lista de favoritos. Se ejecuta escuchando el click sobre el li y éste intercambia color de fondo y fuente, así como pasa a formar parte de la lista de favoritos
+
+    liEl.addEventListener('click', handleItemListClick);
+
+    function handleItemListClick() {
+        // 1. se intercambia el color del fondo del li con el del texto del título
+        function changeLiColor() {
+            // si tiene la clase list-item, se le quita y se le añade la clase list-item-select
+            if (liEl.classList.contains('list-item')) {
+                liEl.classList.add('list-item-select');
+            };
         };
-        // guardamos en esa lista los elementos del array, según vayan sumándose (bucle)
+        changeLiColor();
+
+        // 2 .constante que selecciona todos los lis que han cambiado de clase
+        const liElSelected = document.querySelectorAll('.list-item-select');
+        console.log(liElSelected);
+
+        // acumular lis en el array vacío
+        for (let i = 0; i < liElSelected.length; i++) {
+            const newSelectedArray = selectedArray.push(liElSelected[i].innerHTML);
+        }
+        // // se crea otra lista en mi main-section, situada a la izquierda de la pantalla
+        sectionEl.innerHTML += '<ul class="selected-list">';
+        // // // la recojo en una constante
+        const SelectedList = document.querySelector('.selected-list');
+        // // // creo un h2 dentro de la nueva lista
+        SelectedList.innerHTML = '<h2 class="selected-list__title">Mis series favoritas</h2>';
+        console.log(SelectedList);
+        // // // array se visualiza en la lista a la izquierda
+        SelectedList.innerHTML += selectedArray;
     }
+
+
+
+
+
+
 }
-    
+
 

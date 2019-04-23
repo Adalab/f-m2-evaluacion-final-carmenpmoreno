@@ -1,10 +1,11 @@
 .list-item {
-    background-color: pink;
-    color: azure;
+    background-color: grey;
+    color:lightgrey;
+    list-style-type: none;
 }
 .list-item-select {
-    background-color: azure;
-    color: pink;    
+    background-color: lightgrey;
+    color: grey;    
 }
 .main-section {
     display: flex;
