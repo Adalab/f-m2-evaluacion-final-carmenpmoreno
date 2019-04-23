@@ -18,7 +18,7 @@ function handleSearchButton() {
     sectionEl.innerHTML = '<ul class="list"></ul>';
     const ulEl = document.querySelector('.list');
     // pinta en nuestro ul un li y lo meto en una constante
-    ulEl.innerHTML = '<h3 class="message">¡Pincha en la imagen si es de tus favoritas!</h2><li class="list-item"></li>';
+    ulEl.innerHTML = '<li class="list-item"></li>';
     const liEl = document.querySelector('.list-item');
     // dentro del li, mete un h2 y una imagen y las guardo en constantes
     liEl.innerHTML = '<h2 class="title"></h2><img class="photo" src="" alt="">';
