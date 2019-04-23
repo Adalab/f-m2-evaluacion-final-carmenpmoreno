@@ -54,23 +54,24 @@ function handleSearchButton () {
         };
         // almacenamos en un array que creamos en este momento, cada li que tenga la clase 'list-item-select'
         if (liEl.classList.contains('list-item-select')) {
-            // let liSelected = document.querySelector('.list-item-select');
-            console.log(liEl);
+            const liElSelected = document.querySelectorAll('list-item-select');
             // creamos el array vacío en una variable
             const selectedArray = [];
-            selectedArray[0] = liEl.innerHTML;
-            // for(let i=0; i<selectedSeries.length; i++) {
-            // }
+            // bucle que me recorre todo el array de lis y asigna a cada uno una posición dentro del listado de favoritos "Selected Array"
+            for(let i=0; i<selectedArray.length; i++) {
+                selectedArray[0] = liElSelected[0].innerHTML;
+            }
             console.log(selectedArray);
             // se crea otra lista en mi main-section, situada a la izquierda de la pantalla
             sectionEl.innerHTML += '<ul class="selected-list">';
-            // la recojo en una constante
+            // // la recojo en una constante
             const SelectedList = document.querySelector('.selected-list');
-            // creo un h2 dentro de la nueva lista
+            // // creo un h2 dentro de la nueva lista
             SelectedList.innerHTML ='<h2 class="selected-list__title">Mis series favoritas</h2>';
             console.log(SelectedList);
-            // array se visualiza en la lista a la izquierda
-            SelectedList.innerHTML += selectedArray[0];
+            // // array se visualiza en la lista a la izquierda
+            SelectedList.innerHTML += selectedArray;
+
         };
         // guardamos en esa lista los elementos del array, según vayan sumándose (bucle)
     }
