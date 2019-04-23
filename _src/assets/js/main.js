@@ -1,6 +1,6 @@
 'use strict';
 
-// primera etapa del ejercicio: cuando se pulse el botón: añadir la info del input a la url de búsqueda a la Api para que nos devuelva la serie escrita en el input: nombre e imagen del cartel
+
 
 const buttonEl = document.querySelector('.btn');
 const inputEl = document.querySelector('.finder-input');
