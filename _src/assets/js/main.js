@@ -53,10 +53,10 @@ function handleSearchButton() {
             console.log(selectedArray);
         }
         
-        sectionEl.innerHTML += '<ul class="selected-list">';
-        const SelectedList = document.querySelector('.selected-list');
-        SelectedList.innerHTML = '<h2 class="selected-list__title">Mis series favoritas</h2>';
-        SelectedList.innerHTML += selectedArray;
+        // sectionEl.innerHTML += '<ul class="selected-list">';
+        // const SelectedList = document.querySelector('.selected-list');
+        // SelectedList.innerHTML = '<h2 class="selected-list__title">Mis series favoritas</h2>';
+        // SelectedList.innerHTML += selectedArray;
 
         saveCache(selectedArray);
     };
@@ -66,6 +66,13 @@ function saveCache(cacheInfo) {
     localStorage.setItem('name', JSON.stringify(cacheInfo));
     const savedName = JSON.parse(localStorage.getItem('name'));
     console.log(savedName);
+
+    sectionEl.innerHTML += '<ul class="selected-list">';
+    const SelectedList = document.querySelector('.selected-list');
+    SelectedList.innerHTML = '<h2 class="selected-list__title">Mis series favoritas</h2>';
+    SelectedList.innerHTML += selectedArray;
+
+    // probar a guardar en el array con push mi savedName
 };
 
 function removeMessage(value) {
