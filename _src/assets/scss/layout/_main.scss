@@ -7,16 +7,11 @@
     background-color: lightgrey;
     color: grey;    
 }
-.title {
-    display: block;
-}
 .main-section {
     display: flex;
     flex-direction: row;
 }
-.message {
-    display: inline;
-}
+
 .selected-list {
     order:-1;
 }

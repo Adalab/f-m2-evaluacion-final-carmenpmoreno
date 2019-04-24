@@ -9,27 +9,32 @@ const selectedArray = [];
 buttonEl.addEventListener('click', handleSearchButton);
 
 function handleSearchButton() {
+
     const inputValue = inputEl.value;
     sectionEl.innerHTML = '<ul class="list"></ul>';
     const ulEl = document.querySelector('.list');
     ulEl.innerHTML = '<h3 class="message">¡Haz click si es de tus favoritas!</h2><li class="list-item"></li>';
-    
-    removeMessage(inputValue);
-
     const liEl = document.querySelector('.list-item');
     liEl.innerHTML = '<h2 class="title"></h2><img class="photo" src="" alt="">';
     const title = document.querySelector('.title');
     const photo = document.querySelector('.photo');
+
+    removeMessage(inputValue);
+    // saco fuera la función que borra el mensaje que salta tras la búsqueda si no se ha rellenado el input
+
     fetch('http://api.tvmaze.com/singlesearch/shows?q=' + inputValue)
         .then(function (response) {
             return response.json()
         })
         .then(function (data) {
+            console.log(data);
             title.innerHTML = data.name;
             if (data.image === null) {
                 photo.src = 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
             } else {
                 photo.src = data.image.medium;
+                photo.alt = 'imagen principal de la serie ' + data.name;
+                // añadida alt con titulo serie
             }
 
         });
@@ -37,16 +42,13 @@ function handleSearchButton() {
     liEl.addEventListener('click', handleItemListClick);
 
     function handleItemListClick() {
-        function changeLiColor() {
-            if (liEl.classList.contains('list-item')) {
-                liEl.classList.add('list-item-select');
-            };
-        };
-        changeLiColor();
-
+        
+        changeItemListStyle(liEl);
+        // saco fuera la función que cambia el estilo del li
         const liElSelected = document.querySelectorAll('.list-item-select');
         for (let i = 0; i < liElSelected.length; i++) {
             const newSelectedArray = selectedArray.push(liElSelected[i].innerHTML);
+            console.log(selectedArray);
         }
         sectionEl.innerHTML += '<ul class="selected-list">';
         const SelectedList = document.querySelector('.selected-list');
@@ -61,3 +63,8 @@ function removeMessage(value) {
     };
 }
 
+function changeItemListStyle(element) {
+    if (element.classList.contains('list-item')) {
+        element.classList.add('list-item-select');
+    };
+};
