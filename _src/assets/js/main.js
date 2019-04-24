@@ -45,17 +45,28 @@ function handleSearchButton() {
         
         changeItemListStyle(liEl);
         // saco fuera la función que cambia el estilo del li
+
         const liElSelected = document.querySelectorAll('.list-item-select');
+        console.log(liElSelected);
         for (let i = 0; i < liElSelected.length; i++) {
             const newSelectedArray = selectedArray.push(liElSelected[i].innerHTML);
             console.log(selectedArray);
         }
+        
         sectionEl.innerHTML += '<ul class="selected-list">';
         const SelectedList = document.querySelector('.selected-list');
         SelectedList.innerHTML = '<h2 class="selected-list__title">Mis series favoritas</h2>';
         SelectedList.innerHTML += selectedArray;
-    }
-}
+
+        saveCache(selectedArray);
+    };
+};
+
+function saveCache(cacheInfo) {
+    localStorage.setItem('name', JSON.stringify(cacheInfo));
+    const savedName = JSON.parse(localStorage.getItem('name'));
+    console.log(savedName);
+};
 
 function removeMessage(value) {
     if (!!!value) {
