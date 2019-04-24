@@ -14,12 +14,7 @@ function handleSearchButton() {
     const ulEl = document.querySelector('.list');
     ulEl.innerHTML = '<h3 class="message">¡Haz click si es de tus favoritas!</h2><li class="list-item"></li>';
     
-    function removeMessage() {
-        if (!!!inputValue) {
-            ulEl.innerHTML = ' ';
-        };
-    }
-    removeMessage();
+    removeMessage(inputValue);
 
     const liEl = document.querySelector('.list-item');
     liEl.innerHTML = '<h2 class="title"></h2><img class="photo" src="" alt="">';
@@ -60,4 +55,9 @@ function handleSearchButton() {
     }
 }
 
+function removeMessage(value) {
+    if (!!!value) {
+        sectionEl.innerHTML = ' ';
+    };
+}
 
