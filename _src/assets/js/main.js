@@ -12,10 +12,10 @@ function handleSearchButton() {
     const inputValue = inputEl.value;
     sectionEl.innerHTML = '<ul class="list"></ul>';
     const ulEl = document.querySelector('.list');
-    ulEl.innerHTML = '<h3 class="message">¡Haz click si es de tus favoritas!</h2><li class="list-item"></li>';
+    ulEl.innerHTML = '<h3 class="message">¡Haz click si es de tus favoritas!</h2><li class="list-item">hola</li>';
     
     function removeMessage() {
-        if (!!!inputValue) {
+        if (!inputValue) {
             ulEl.innerHTML = ' ';
         };
     }
@@ -30,6 +30,7 @@ function handleSearchButton() {
             return response.json()
         })
         .then(function (data) {
+            console.log(data);
             title.innerHTML = data.name;
             if (data.image === null) {
                 photo.src = 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
